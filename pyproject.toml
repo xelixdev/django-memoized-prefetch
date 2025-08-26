@@ -1,6 +1,6 @@
 [project]
 name = "django-memoized-prefetch"
-version = "0.1.0"
+version = "0.1.1"
 description = "A memoized prefetch for Django."
 authors = [
     {name = "Mikuláš Poul", email = "mikulas.poul@xelix.com"},
@@ -154,6 +154,7 @@ parametrize-names-type = "list"
 [dependency-groups]
 dev = [
     "dirty-equals>=0.9.0",
+    "django-chunkator>=2.0.0",
     "django-seal>=1.7.1",
     "factory-boy>=3.3.3",
     "pytest-cov>=6.2.1",

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "tests.test_project.test_app",
+    "tests.test_project.bookshop",
     "seal",
 ]
 
