@@ -53,6 +53,7 @@ class SomeModelFactory(factory.django.DjangoModelFactory):
 
     class Meta:
         model = SomeModel
+        skip_postgeneration_save = True
 
 
 class SomeChildModelFactory(factory.django.DjangoModelFactory):

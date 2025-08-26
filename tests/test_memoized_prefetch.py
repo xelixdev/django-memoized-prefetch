@@ -6,6 +6,7 @@ from pytest_django import DjangoAssertNumQueries
 
 from django_memoized_prefetch import MemoizedPrefetch, MemoizedPrefetchConfig
 from tests.test_project.test_app.factories import (
+    SomeChildModelFactory,
     SomeDifferentParentModelFactory,
     SomeModelFactory,
     SomeParentModelFactory,
@@ -115,6 +116,8 @@ class TestMemoizedPrefetch:
         with django_assert_num_queries(0):  # all parents already fetched
             memoized_prefetch.process_chunk(objects)
 
+        assert objects
+
         for obj in objects:
             # does not throw seal attribute -> fetched in process_chunk
             assert obj.some_parent_model is not None
@@ -151,6 +154,8 @@ class TestMemoizedPrefetch:
         with django_assert_num_queries(0):  # already fetched
             memoized_prefetch.process_chunk(objects)
 
+        assert objects
+
         for obj in objects:
             related_models = list(obj.some_related_models.all())
             assert len(related_models) == 2
@@ -178,7 +183,7 @@ class TestMemoizedPrefetch:
     @pytest.fixture
     def child_models(self, objects_some_different_parent_a, objects_some_different_parent_b) -> list[SomeChildModel]:
         return [
-            SomeChildModel(some_model=some_model)
+            SomeChildModelFactory(some_model=some_model)
             for some_model in itertools.chain(objects_some_different_parent_a, objects_some_different_parent_b)
         ]
 
@@ -186,13 +191,15 @@ class TestMemoizedPrefetch:
         memoized_prefetch = MemoizedPrefetch(
             MemoizedPrefetchConfig(SomeParentModel, ["some_model__some_parent_model"], prefetch_all=True),
             MemoizedPrefetchConfig(
-                SomeDifferentParentModel, ["some_model__some_other_different_parent"]
+                SomeDifferentParentModel, ["some_model.some_other_different_parent"]
             ),  # support both . and __
         )
 
         objects = list(SomeChildModel.objects.select_related("some_model").seal())
 
         memoized_prefetch.process_chunk(objects)
+
+        assert objects
 
         for obj in objects:
             # does not throw seal attribute -> fetched in process_chunk
