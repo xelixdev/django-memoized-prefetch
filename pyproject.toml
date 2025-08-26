@@ -148,5 +148,9 @@ parametrize-names-type = "list"
 
 [dependency-groups]
 dev = [
+    "django-seal>=1.7.1",
+    "factory-boy>=3.3.3",
+    "pytest-cov>=6.2.1",
+    "pytest-django>=4.11.1",
     "ruff>=0.12.10",
 ]
