@@ -1,10 +1,35 @@
 [project]
 name = "django-memoized-prefetch"
 version = "0.1.0"
-description = "Add your description here"
+description = "A memoized prefetch for Django."
+authors = [
+    {name = "Mikuláš Poul", email = "mikulas.poul@xelix.com"},
+    {name = "Cameron Hobbs", email = "cameron.hobbs@xelix.com"}
+]
+license = "MIT"
+license-files = [
+    "LICENSE",
+]
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+    "django (>=4.2)"
+]
+keywords = ["django"]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: Django",
+]
+
+[project.urls]
+"Repository" = "https://github.com/xelixdev/django-memoized-prefetch"
 
 [tool.ruff]
 line-length = 120
