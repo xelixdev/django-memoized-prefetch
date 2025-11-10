@@ -18,7 +18,7 @@ jobs:
           version: "latest"
       - name: Build
         run: uv build
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           path: ./dist/*
 
