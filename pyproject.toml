@@ -1,6 +1,6 @@
 [project]
 name = "django-memoized-prefetch"
-version = "0.1.1"
+version = "0.1.2"
 description = "A memoized prefetch for Django."
 authors = [
     {name = "Mikuláš Poul", email = "mikulas.poul@xelix.com"},
@@ -20,11 +20,11 @@ keywords = ["django"]
 classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Development Status :: 5 - Production/Stable",
     "Framework :: Django",
 ]
@@ -38,7 +38,7 @@ build-backend = "hatchling.build"
 
 [tool.ruff]
 line-length = 120
-target-version = "py39"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = [
@@ -159,5 +159,5 @@ dev = [
     "factory-boy>=3.3.3",
     "pytest-cov>=6.2.1",
     "pytest-django>=4.11.1",
-    "ruff>=0.12.10",
+    "ruff>=0.14.4",
 ]
